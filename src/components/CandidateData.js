@@ -44,6 +44,10 @@ export default function CandidateData() {
          }
     }
 
+    const handleSearch = (event) =>{
+        setSearchV(event.target.value);
+        setFilterValue('');
+    }
     // const checkFilter = (data) =>
     // {
     //     if(data["gender"] == filterValue)
@@ -77,12 +81,15 @@ export default function CandidateData() {
     return (
         <div>
             <div className="flex justify-start mt-8 ml-2">
-                <div className="mr-12" onChange={(e) => { setFilterValue(e.target.value); setSearchV(null) }}>
+                <div className="mr-12" onChange={(e) => { setFilterValue(e.target.value);setSearchV(null)}}>
                     <input  name="Check"
                         type="radio"  value="Male"/>
                         &nbsp;&nbsp;&nbsp;Male&nbsp;&nbsp;&nbsp;
                     <input  name="Check"
                         type="radio"value="Female"/> &nbsp;&nbsp;&nbsp;Female
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input  name="Check"
+                        type="radio"value="Male Female"/> &nbsp;&nbsp;&nbsp;Both
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 </div>
                 <div className="ml-72 w-1/2">
@@ -106,7 +113,7 @@ export default function CandidateData() {
                             "
                         id="search"
                         placeholder="Whom are you looking for ?"
-                        onChange={(e)=>{setSearchV(e.target.value)}}
+                        onChange={handleSearch}
                         onKeyDown={(e)=>{(e.key == 'Enter') ? setSearchV(e.target.value) : console.log('Wrong Key') }}
                     />
                 </div>
@@ -124,7 +131,7 @@ export default function CandidateData() {
                 {console.log(filterValue)}
                 {data.map((elements) => (
 
-                    elements["gender"] == filterValue || elements["first_name"].includes(searchV) ?
+                    filterValue.includes(elements["gender"]) || elements["first_name"].includes(searchV) ?
 
                         <tr key={elements["id"]}>
                             <td className='border border-slate-200'>
