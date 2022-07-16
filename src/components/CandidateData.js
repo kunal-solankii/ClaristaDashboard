@@ -37,10 +37,11 @@ export default function CandidateData() {
             data.push(objNewCandidate);
             setNewAdded(len);
         }
-        // else
-        // {
-        // toast.error('Invalid Inputs !');
-        // }
+
+         else
+         {
+        toast.error('Invalid Inputs !');
+         }
     }
 
     // const checkFilter = (data) =>
@@ -50,14 +51,14 @@ export default function CandidateData() {
 
 
     // }
-    const handleFilterValue = (input) => {
+    // const handleFilterValue = (input) => {
 
-        if (input == "Male") {
-            setFilterValue("Male");
-        }
-        if (input == "Female") {
-            setFilterValue("Female");
-        }
+    //     if (input == "Male") {
+    //         setFilterValue("Male");
+    //     }
+    //     if (input == "Female") {
+    //         setFilterValue("Female");
+    //     }
         // if(isM && isF)
         // {
         //     setFilterValue("Male Female");
@@ -71,7 +72,7 @@ export default function CandidateData() {
         // {
         //     setIsF(!isF);
         // }
-    }
+    
 
     return (
         <div>
